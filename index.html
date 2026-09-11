@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Input Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    form {
+      display: flex;
+      gap: 8px;
+    }
+
+    input {
+      flex: 1;
+      padding: 8px;
+    }
+
+    button {
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    #submitted-input {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Submit Your Input</h1>
+
+  <form id="input-form">
+    <label for="user-input">Enter something:</label>
+    <input id="user-input" name="userInput" type="text" required>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="submitted-input" aria-live="polite"></div>
+
+  <script>
+    const form = document.getElementById('input-form');
+    const input = document.getElementById('user-input');
+    const output = document.getElementById('submitted-input');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      output.textContent = `You entered: ${input.value}`;
+      input.value = '';
+      input.focus();
+    });
+  </script>
+</body>
+</html>
